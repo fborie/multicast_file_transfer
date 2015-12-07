@@ -13,6 +13,8 @@
   <name>client</name>
   <url>http://maven.apache.org</url>
   <properties>
+      <packageName>cl.uandes.so.client</packageName>
+      <mainClass>${packageName.App}</mainClass>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
   <dependencies>
@@ -22,22 +24,55 @@
       <version>3.8.1</version>
       <scope>test</scope>
     </dependency>
+    <dependency>
+      <groupId>io.netty</groupId>
+      <artifactId>netty-all</artifactId>
+      <version>4.0.23.Final</version>
+    </dependency>
+    <dependency>
+      <groupId>com.google.protobuf</groupId>
+      <artifactId>protobuf-java</artifactId>
+      <version>2.5.0</version>
+      <type>jar</type>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.commons</groupId>
+      <artifactId>commons-lang3</artifactId>
+      <version>3.3.2</version>
+      <type>jar</type>
+    </dependency>
   </dependencies>
   <build>
-    <plugins> 
-       <plugin>
-         <groupId>org.apache.maven.plugins</groupId>
-         <artifactId>maven-jar-plugin</artifactId>
-         <version>2.3.2</version>
-         <configuration>
-           <archive>
-             <manifest>
-               <addClasspath>true</addClasspath>
-               <mainClass>cl.uandes.so.server.App</mainClass>
-             </manifest>
-           </archive>
-         </configuration>
-       </plugin>
-    </plugins>
+  <plugins> 
+   <plugin>
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-jar-plugin</artifactId>
+    <version>2.3.2</version>
+  </plugin>
+                        <plugin>
+                            <artifactId>maven-assembly-plugin</artifactId>
+                            <version>2.2.1</version>
+                            <configuration>
+                                <descriptorRefs>
+                                    <descriptorRef>jar-with-dependencies</descriptorRef>
+                                </descriptorRefs>
+                                <archive>
+                                  <manifest>
+                                    <mainClass>cl.uandes.so.client.App</mainClass>
+                                  </manifest>
+                                </archive>
+                            </configuration>
+                            <executions>
+                                <execution>
+                                    <id>make-assembly</id>
+                                    <phase>package</phase>
+                                    <goals>
+                                        <goal>single</goal>
+                                    </goals>
+                                </execution>
+                            </executions>
+                        </plugin>
+
+  </plugins>
   </build>
 </project>
