@@ -2,11 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3eb83ee7-07f5-4ec8-9506-d64fb82d6db1" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/src/main/java/cl/uandes/so/client/FileAnnouncementProtos.java" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_guava_guava_18_0.xml" afterPath="" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/server/src/main/java/cl/uandes/so/server/FileAnnouncement.proto" afterPath="$PROJECT_DIR$/client/src/main/java/cl/uandes/so/client/FileAnnouncement.proto" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/pom.xml" afterPath="$PROJECT_DIR$/server/pom.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/src/main/java/cl/uandes/so/client/MultiCastClientHandler.java" afterPath="$PROJECT_DIR$/client/src/main/java/cl/uandes/so/client/MultiCastClientHandler.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/server.iml" afterPath="$PROJECT_DIR$/server/server.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/main/java/cl/uandes/so/server/App.java" afterPath="$PROJECT_DIR$/server/src/main/java/cl/uandes/so/server/App.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/main/java/cl/uandes/so/server/LoginServerHandler.java" afterPath="$PROJECT_DIR$/server/src/main/java/cl/uandes/so/server/LoginServerHandler.java" />
     </list>
     <ignored path="ultimaentrega.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -31,14 +33,23 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file leaf-file-name="App.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/client/src/main/java/cl/uandes/so/client/App.java">
+        <entry file="file://$PROJECT_DIR$/server/src/main/java/cl/uandes/so/server/App.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="80" column="66" selection-start-line="80" selection-start-column="66" selection-end-line="80" selection-end-column="66" />
+              <caret line="200" column="0" selection-start-line="200" selection-start-column="0" selection-end-line="201" selection-end-column="0" />
               <folding>
-                <element signature="e#3472#3849#0" expanded="true" />
-                <element signature="e#3848#3849#0" expanded="true" />
+                <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="App.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/client/src/main/java/cl/uandes/so/client/App.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.81796116">
+              <caret line="123" column="36" selection-start-line="123" selection-start-column="36" selection-end-line="123" selection-end-column="36" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -48,6 +59,21 @@
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
               <caret line="24" column="4" selection-start-line="24" selection-start-column="4" selection-end-line="24" selection-end-column="4" />
+              <folding>
+                <element signature="e#0#1721#0" expanded="false" />
+                <element signature="imports" expanded="false" />
+                <element signature="e#681#682#0" expanded="false" />
+                <element signature="e#719#720#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Utils.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/client/src/main/java/cl/uandes/so/client/Utils.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="8" column="5" selection-start-line="8" selection-start-column="5" selection-end-line="8" selection-end-column="5" />
               <folding />
             </state>
           </provider>
@@ -57,76 +83,17 @@
         <entry file="file://$PROJECT_DIR$/client/src/main/java/cl/uandes/so/client/MultiCastClientHandler.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="16" column="18" selection-start-line="16" selection-start-column="18" selection-end-line="16" selection-end-column="18" />
+              <caret line="50" column="32" selection-start-line="50" selection-start-column="32" selection-end-line="50" selection-end-column="32" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="FileAnnouncement.proto" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/server/src/main/java/cl/uandes/so/server/FileAnnouncement.proto">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-6.206897">
-              <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="LoginServerHandler.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/server/src/main/java/cl/uandes/so/server/LoginServerHandler.java">
+      <file leaf-file-name="Utils.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/server/src/main/java/cl/uandes/so/server/Utils.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="51" column="51" selection-start-line="51" selection-start-column="51" selection-end-line="51" selection-end-column="51" />
-              <folding>
-                <element signature="e#0#2728#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MulticastServerHandler.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/server/src/main/java/cl/uandes/so/server/MulticastServerHandler.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="App.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/server/src/main/java/cl/uandes/so/server/App.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.82976043">
-              <caret line="192" column="17" selection-start-line="192" selection-start-column="17" selection-end-line="192" selection-end-column="17" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#5762#5999#0" expanded="true" />
-                <element signature="e#5998#5999#0" expanded="true" />
-                <element signature="e#7206#7650#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pom.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/server/pom.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-26.875">
-              <caret line="43" column="18" selection-start-line="43" selection-start-column="18" selection-end-line="43" selection-end-column="18" />
+              <caret line="28" column="51" selection-start-line="28" selection-start-column="51" selection-end-line="28" selection-end-column="51" />
               <folding />
             </state>
           </provider>
@@ -136,10 +103,121 @@
         <entry file="file://$PROJECT_DIR$/server/src/main/java/cl/uandes/so/server/LoginServer.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="59" column="12" selection-start-line="59" selection-start-column="12" selection-end-line="63" selection-end-column="62" />
+              <caret line="24" column="18" selection-start-line="24" selection-start-column="18" selection-end-line="24" selection-end-column="18" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="FileAnnouncementProtos.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/client/src/main/java/cl/uandes/so/client/FileAnnouncementProtos.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="536" column="67" selection-start-line="536" selection-start-column="67" selection-end-line="536" selection-end-column="67" />
               <folding>
-                <element signature="e#1333#1816#0" expanded="true" />
-                <element signature="e#1815#1816#0" expanded="true" />
+                <element signature="e#0#28250#0" expanded="false" />
+                <element signature="e#2236#2237#0" expanded="false" />
+                <element signature="e#2272#2273#0" expanded="false" />
+                <element signature="e#2331#2332#0" expanded="false" />
+                <element signature="e#2367#2368#0" expanded="false" />
+                <element signature="e#2533#2534#0" expanded="false" />
+                <element signature="e#2572#2573#0" expanded="false" />
+                <element signature="e#5542#5543#0" expanded="false" />
+                <element signature="e#5569#5570#0" expanded="false" />
+                <element signature="e#5821#5822#0" expanded="false" />
+                <element signature="e#5883#5884#0" expanded="false" />
+                <element signature="e#7003#7004#0" expanded="false" />
+                <element signature="e#7065#7066#0" expanded="false" />
+                <element signature="e#8180#8181#0" expanded="false" />
+                <element signature="e#8242#8243#0" expanded="false" />
+                <element signature="e#8338#8339#0" expanded="false" />
+                <element signature="e#8368#8369#0" expanded="false" />
+                <element signature="e#8602#8603#0" expanded="false" />
+                <element signature="e#8664#8665#0" expanded="false" />
+                <element signature="e#8766#8767#0" expanded="false" />
+                <element signature="e#8799#8800#0" expanded="false" />
+                <element signature="e#15506#15507#0" expanded="false" />
+                <element signature="e#15557#15558#0" expanded="false" />
+                <element signature="e#15877#15878#0" expanded="false" />
+                <element signature="e#15915#15916#0" expanded="false" />
+                <element signature="e#16324#16325#0" expanded="false" />
+                <element signature="e#16383#16384#0" expanded="false" />
+                <element signature="e#20533#20534#0" expanded="false" />
+                <element signature="e#20599#20600#0" expanded="false" />
+                <element signature="e#22566#22567#0" expanded="false" />
+                <element signature="e#22632#22633#0" expanded="false" />
+                <element signature="e#24590#24591#0" expanded="false" />
+                <element signature="e#24656#24657#0" expanded="false" />
+                <element signature="e#24760#24761#0" expanded="false" />
+                <element signature="e#24794#24795#0" expanded="false" />
+                <element signature="e#25443#25444#0" expanded="false" />
+                <element signature="e#25509#25510#0" expanded="false" />
+                <element signature="e#25619#25620#0" expanded="false" />
+                <element signature="e#25656#25657#0" expanded="false" />
+                <element signature="e#26728#26729#0" expanded="false" />
+                <element signature="e#26755#26756#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="FileTransfer.proto" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/client/src/main/java/cl/uandes/so/client/FileTransfer.proto">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="FileTransferProtos.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/client/src/main/java/cl/uandes/so/client/FileTransferProtos.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="686" column="44" selection-start-line="686" selection-start-column="44" selection-end-line="686" selection-end-column="44" />
+              <folding>
+                <element signature="e#0#23089#0" expanded="false" />
+                <element signature="e#1798#1799#0" expanded="false" />
+                <element signature="e#1834#1835#0" expanded="false" />
+                <element signature="e#1889#1890#0" expanded="false" />
+                <element signature="e#1925#1926#0" expanded="false" />
+                <element signature="e#2091#2092#0" expanded="false" />
+                <element signature="e#2130#2131#0" expanded="false" />
+                <element signature="e#3880#3881#0" expanded="false" />
+                <element signature="e#3982#3983#0" expanded="false" />
+                <element signature="e#4887#4888#0" expanded="false" />
+                <element signature="e#4914#4915#0" expanded="false" />
+                <element signature="e#5131#5132#0" expanded="false" />
+                <element signature="e#5193#5194#0" expanded="false" />
+                <element signature="e#5277#5278#0" expanded="false" />
+                <element signature="e#5301#5302#0" expanded="false" />
+                <element signature="e#5525#5526#0" expanded="false" />
+                <element signature="e#5587#5588#0" expanded="false" />
+                <element signature="e#6709#6710#0" expanded="false" />
+                <element signature="e#6771#6772#0" expanded="false" />
+                <element signature="e#6886#6887#0" expanded="false" />
+                <element signature="e#6912#6913#0" expanded="false" />
+                <element signature="e#12460#12461#0" expanded="false" />
+                <element signature="e#12566#12567#0" expanded="false" />
+                <element signature="e#13065#13066#0" expanded="false" />
+                <element signature="e#13116#13117#0" expanded="false" />
+                <element signature="e#13436#13437#0" expanded="false" />
+                <element signature="e#13474#13475#0" expanded="false" />
+                <element signature="e#13832#13833#0" expanded="false" />
+                <element signature="e#13891#13892#0" expanded="false" />
+                <element signature="e#17461#17462#0" expanded="false" />
+                <element signature="e#17527#17528#0" expanded="false" />
+                <element signature="e#17619#17620#0" expanded="false" />
+                <element signature="e#17647#17648#0" expanded="false" />
+                <element signature="e#18257#18258#0" expanded="false" />
+                <element signature="e#18323#18324#0" expanded="false" />
+                <element signature="e#20330#20331#0" expanded="false" />
+                <element signature="e#20396#20397#0" expanded="false" />
+                <element signature="e#20519#20520#0" expanded="false" />
+                <element signature="e#20549#20550#0" expanded="false" />
+                <element signature="e#21680#21681#0" expanded="false" />
+                <element signature="e#21707#21708#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -174,6 +252,9 @@
         <option value="$PROJECT_DIR$/server/src/main/java/cl/uandes/so/server/FileAnnouncementChunk.java" />
         <option value="$PROJECT_DIR$/server/src/main/java/cl/uandes/so/server/MulticastServerHandler.java" />
         <option value="$PROJECT_DIR$/server/src/main/java/cl/uandes/so/server/App.java" />
+        <option value="$PROJECT_DIR$/client/src/main/java/cl/uandes/so/client/FileAnnouncementProtos.java" />
+        <option value="$PROJECT_DIR$/client/src/main/java/cl/uandes/so/client/FileTransferProtos.java" />
+        <option value="$PROJECT_DIR$/client/src/main/java/cl/uandes/so/client/MultiCastClientHandler.java" />
       </list>
     </option>
   </component>
@@ -186,9 +267,9 @@
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="65" />
-    <option name="y" value="-4" />
+    <option name="y" value="24" />
     <option name="width" value="1855" />
-    <option name="height" value="956" />
+    <option name="height" value="928" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -215,9 +296,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
-      <pane id="PackagesPane" />
       <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -362,7 +442,23 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scratches" />
     </panes>
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/client/src/main/java/cl/uandes/so/client" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="cl.uandes.so.client" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="cl.uandes.so.client" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/server/src/main/java/cl/uandes/so/server" />
+      <recent name="$PROJECT_DIR$/client/src/main/java/cl/uandes/so/client" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
@@ -611,6 +707,9 @@
     </configuration>
   </component>
   <component name="ShelveChangesManager" show_recycled="false" />
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="3eb83ee7-07f5-4ec8-9506-d64fb82d6db1" name="Default" comment="" />
@@ -621,7 +720,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="65" y="-4" width="1855" height="956" extended-state="6" />
+    <frame x="65" y="24" width="1855" height="928" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -670,14 +769,212 @@
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout-to-restore>
   </component>
+  <component name="Vcs.Log.UiProperties">
+    <option name="RECENTLY_FILTERED_USER_GROUPS">
+      <collection />
+    </option>
+    <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+      <collection />
+    </option>
+  </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager />
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/server/src/main/java/cl/uandes/so/server/App.java</url>
+          <line>200</line>
+          <properties />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/server/src/main/java/cl/uandes/so/server/App.java</url>
+          <line>170</line>
+          <properties />
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/client/src/main/java/cl/uandes/so/client/App.java</url>
+          <line>113</line>
+          <properties />
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/client/src/main/java/cl/uandes/so/client/App.java</url>
+          <line>102</line>
+          <properties />
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="4" />
+    </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/server/src/main/java/cl/uandes/so/server/App.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="213" column="49" selection-start-line="213" selection-start-column="49" selection-end-line="213" selection-end-column="49" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/main/java/cl/uandes/so/client/LoginClientHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="24" column="4" selection-start-line="24" selection-start-column="4" selection-end-line="24" selection-end-column="4" />
+          <folding>
+            <element signature="e#0#1721#0" expanded="false" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#681#682#0" expanded="false" />
+            <element signature="e#719#720#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/main/java/cl/uandes/so/client/Utils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/src/main/java/cl/uandes/so/server/Utils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="28" column="51" selection-start-line="28" selection-start-column="51" selection-end-line="28" selection-end-column="51" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="44" column="18" selection-start-line="44" selection-start-column="18" selection-end-line="44" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/src/main/java/cl/uandes/so/server/LoginServer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="53" column="21" selection-start-line="53" selection-start-column="21" selection-end-line="53" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/main/java/cl/uandes/so/client/FileAnnouncementProtos.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="536" column="67" selection-start-line="536" selection-start-column="67" selection-end-line="536" selection-end-column="67" />
+          <folding>
+            <element signature="e#0#28250#0" expanded="false" />
+            <element signature="e#2236#2237#0" expanded="false" />
+            <element signature="e#2272#2273#0" expanded="false" />
+            <element signature="e#2331#2332#0" expanded="false" />
+            <element signature="e#2367#2368#0" expanded="false" />
+            <element signature="e#2533#2534#0" expanded="false" />
+            <element signature="e#2572#2573#0" expanded="false" />
+            <element signature="e#5542#5543#0" expanded="false" />
+            <element signature="e#5569#5570#0" expanded="false" />
+            <element signature="e#5821#5822#0" expanded="false" />
+            <element signature="e#5883#5884#0" expanded="false" />
+            <element signature="e#7003#7004#0" expanded="false" />
+            <element signature="e#7065#7066#0" expanded="false" />
+            <element signature="e#8180#8181#0" expanded="false" />
+            <element signature="e#8242#8243#0" expanded="false" />
+            <element signature="e#8338#8339#0" expanded="false" />
+            <element signature="e#8368#8369#0" expanded="false" />
+            <element signature="e#8602#8603#0" expanded="false" />
+            <element signature="e#8664#8665#0" expanded="false" />
+            <element signature="e#8766#8767#0" expanded="false" />
+            <element signature="e#8799#8800#0" expanded="false" />
+            <element signature="e#15506#15507#0" expanded="false" />
+            <element signature="e#15557#15558#0" expanded="false" />
+            <element signature="e#15877#15878#0" expanded="false" />
+            <element signature="e#15915#15916#0" expanded="false" />
+            <element signature="e#16324#16325#0" expanded="false" />
+            <element signature="e#16383#16384#0" expanded="false" />
+            <element signature="e#20533#20534#0" expanded="false" />
+            <element signature="e#20599#20600#0" expanded="false" />
+            <element signature="e#22566#22567#0" expanded="false" />
+            <element signature="e#22632#22633#0" expanded="false" />
+            <element signature="e#24590#24591#0" expanded="false" />
+            <element signature="e#24656#24657#0" expanded="false" />
+            <element signature="e#24760#24761#0" expanded="false" />
+            <element signature="e#24794#24795#0" expanded="false" />
+            <element signature="e#25443#25444#0" expanded="false" />
+            <element signature="e#25509#25510#0" expanded="false" />
+            <element signature="e#25619#25620#0" expanded="false" />
+            <element signature="e#25656#25657#0" expanded="false" />
+            <element signature="e#26728#26729#0" expanded="false" />
+            <element signature="e#26755#26756#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/main/java/cl/uandes/so/client/FileTransfer.proto">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/main/java/cl/uandes/so/client/FileTransferProtos.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="686" column="44" selection-start-line="686" selection-start-column="44" selection-end-line="686" selection-end-column="44" />
+          <folding>
+            <element signature="e#0#23089#0" expanded="false" />
+            <element signature="e#1798#1799#0" expanded="false" />
+            <element signature="e#1834#1835#0" expanded="false" />
+            <element signature="e#1889#1890#0" expanded="false" />
+            <element signature="e#1925#1926#0" expanded="false" />
+            <element signature="e#2091#2092#0" expanded="false" />
+            <element signature="e#2130#2131#0" expanded="false" />
+            <element signature="e#3880#3881#0" expanded="false" />
+            <element signature="e#3982#3983#0" expanded="false" />
+            <element signature="e#4887#4888#0" expanded="false" />
+            <element signature="e#4914#4915#0" expanded="false" />
+            <element signature="e#5131#5132#0" expanded="false" />
+            <element signature="e#5193#5194#0" expanded="false" />
+            <element signature="e#5277#5278#0" expanded="false" />
+            <element signature="e#5301#5302#0" expanded="false" />
+            <element signature="e#5525#5526#0" expanded="false" />
+            <element signature="e#5587#5588#0" expanded="false" />
+            <element signature="e#6709#6710#0" expanded="false" />
+            <element signature="e#6771#6772#0" expanded="false" />
+            <element signature="e#6886#6887#0" expanded="false" />
+            <element signature="e#6912#6913#0" expanded="false" />
+            <element signature="e#12460#12461#0" expanded="false" />
+            <element signature="e#12566#12567#0" expanded="false" />
+            <element signature="e#13065#13066#0" expanded="false" />
+            <element signature="e#13116#13117#0" expanded="false" />
+            <element signature="e#13436#13437#0" expanded="false" />
+            <element signature="e#13474#13475#0" expanded="false" />
+            <element signature="e#13832#13833#0" expanded="false" />
+            <element signature="e#13891#13892#0" expanded="false" />
+            <element signature="e#17461#17462#0" expanded="false" />
+            <element signature="e#17527#17528#0" expanded="false" />
+            <element signature="e#17619#17620#0" expanded="false" />
+            <element signature="e#17647#17648#0" expanded="false" />
+            <element signature="e#18257#18258#0" expanded="false" />
+            <element signature="e#18323#18324#0" expanded="false" />
+            <element signature="e#20330#20331#0" expanded="false" />
+            <element signature="e#20396#20397#0" expanded="false" />
+            <element signature="e#20519#20520#0" expanded="false" />
+            <element signature="e#20549#20550#0" expanded="false" />
+            <element signature="e#21680#21681#0" expanded="false" />
+            <element signature="e#21707#21708#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/client/src/main/java/cl/uandes/so/client/App.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -690,7 +987,12 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="19" column="6" selection-start-line="19" selection-start-column="6" selection-end-line="19" selection-end-column="6" />
-          <folding />
+          <folding>
+            <element signature="e#0#1721#0" expanded="false" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#681#682#0" expanded="false" />
+            <element signature="e#719#720#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -706,15 +1008,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/main/java/cl/uandes/so/client/Utils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -726,111 +1019,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/server/src/main/java/cl/uandes/so/server/Utils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="25" column="44" selection-start-line="25" selection-start-column="44" selection-end-line="25" selection-end-column="44" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/src/main/java/cl/uandes/so/server/FileAnnouncementChunk.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="31" column="32" selection-start-line="31" selection-start-column="32" selection-end-line="31" selection-end-column="32" />
-          <folding>
-            <element signature="e#506#507#0" expanded="true" />
-            <element signature="e#537#538#0" expanded="true" />
-            <element signature="e#571#572#0" expanded="true" />
-            <element signature="e#602#603#0" expanded="true" />
-            <element signature="e#634#635#0" expanded="true" />
-            <element signature="e#665#666#0" expanded="true" />
-            <element signature="e#733#734#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/server/src/main/java/cl/uandes/so/server/FileAnnouncementProtos.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="5" column="19" selection-start-line="5" selection-start-column="19" selection-end-line="5" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/src/main/java/cl/uandes/so/server/MulticastServerHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/src/main/java/cl/uandes/so/server/FileAnnouncement.proto">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.206897">
-          <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/main/java/cl/uandes/so/client/LoginClientHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="24" column="4" selection-start-line="24" selection-start-column="4" selection-end-line="24" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/main/java/cl/uandes/so/client/MultiCastClientHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="16" column="18" selection-start-line="16" selection-start-column="18" selection-end-line="16" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/main/java/cl/uandes/so/client/App.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="80" column="66" selection-start-line="80" selection-start-column="66" selection-end-line="80" selection-end-column="66" />
-          <folding>
-            <element signature="e#3472#3849#0" expanded="true" />
-            <element signature="e#3848#3849#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/server/src/main/java/cl/uandes/so/server/LoginServerHandler.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="51" column="51" selection-start-line="51" selection-start-column="51" selection-end-line="51" selection-end-column="51" />
-          <folding>
-            <element signature="e#0#2728#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/src/main/java/cl/uandes/so/server/LoginServer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="59" column="12" selection-start-line="59" selection-start-column="12" selection-end-line="63" selection-end-column="62" />
-          <folding>
-            <element signature="e#1333#1816#0" expanded="true" />
-            <element signature="e#1815#1816#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-26.875">
-          <caret line="43" column="18" selection-start-line="43" selection-start-column="18" selection-end-line="43" selection-end-column="18" />
-          <folding />
+          <caret line="49" column="51" selection-start-line="49" selection-start-column="51" selection-end-line="49" selection-end-column="51" />
         </state>
       </provider>
     </entry>
@@ -842,16 +1041,313 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/server/src/main/java/cl/uandes/so/server/FileAnnouncementChunk.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="31" column="32" selection-start-line="31" selection-start-column="32" selection-end-line="31" selection-end-column="32" />
+          <folding>
+            <element signature="e#733#734#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/src/main/java/cl/uandes/so/server/MulticastServerHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/main/java/cl/uandes/so/client/FileAnnouncementProtos.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#28250#0" expanded="false" />
+            <element signature="e#2236#2237#0" expanded="false" />
+            <element signature="e#2272#2273#0" expanded="false" />
+            <element signature="e#2331#2332#0" expanded="false" />
+            <element signature="e#2367#2368#0" expanded="false" />
+            <element signature="e#2533#2534#0" expanded="false" />
+            <element signature="e#2572#2573#0" expanded="false" />
+            <element signature="e#5542#5543#0" expanded="false" />
+            <element signature="e#5569#5570#0" expanded="false" />
+            <element signature="e#5821#5822#0" expanded="false" />
+            <element signature="e#5883#5884#0" expanded="false" />
+            <element signature="e#7003#7004#0" expanded="false" />
+            <element signature="e#7065#7066#0" expanded="false" />
+            <element signature="e#8180#8181#0" expanded="false" />
+            <element signature="e#8242#8243#0" expanded="false" />
+            <element signature="e#8338#8339#0" expanded="false" />
+            <element signature="e#8368#8369#0" expanded="false" />
+            <element signature="e#8602#8603#0" expanded="false" />
+            <element signature="e#8664#8665#0" expanded="false" />
+            <element signature="e#8766#8767#0" expanded="false" />
+            <element signature="e#8799#8800#0" expanded="false" />
+            <element signature="e#15506#15507#0" expanded="false" />
+            <element signature="e#15557#15558#0" expanded="false" />
+            <element signature="e#15877#15878#0" expanded="false" />
+            <element signature="e#15915#15916#0" expanded="false" />
+            <element signature="e#16324#16325#0" expanded="false" />
+            <element signature="e#16383#16384#0" expanded="false" />
+            <element signature="e#20533#20534#0" expanded="false" />
+            <element signature="e#20599#20600#0" expanded="false" />
+            <element signature="e#22566#22567#0" expanded="false" />
+            <element signature="e#22632#22633#0" expanded="false" />
+            <element signature="e#24590#24591#0" expanded="false" />
+            <element signature="e#24656#24657#0" expanded="false" />
+            <element signature="e#24760#24761#0" expanded="false" />
+            <element signature="e#24794#24795#0" expanded="false" />
+            <element signature="e#25443#25444#0" expanded="false" />
+            <element signature="e#25509#25510#0" expanded="false" />
+            <element signature="e#25619#25620#0" expanded="false" />
+            <element signature="e#25656#25657#0" expanded="false" />
+            <element signature="e#26728#26729#0" expanded="false" />
+            <element signature="e#26755#26756#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/src/main/java/cl/uandes/so/server/FileAnnouncement.proto">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/main/java/cl/uandes/so/client/FileTransferProtos.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#23089#0" expanded="false" />
+            <element signature="e#1798#1799#0" expanded="false" />
+            <element signature="e#1834#1835#0" expanded="false" />
+            <element signature="e#1889#1890#0" expanded="false" />
+            <element signature="e#1925#1926#0" expanded="false" />
+            <element signature="e#2091#2092#0" expanded="false" />
+            <element signature="e#2130#2131#0" expanded="false" />
+            <element signature="e#3880#3881#0" expanded="false" />
+            <element signature="e#3982#3983#0" expanded="false" />
+            <element signature="e#4887#4888#0" expanded="false" />
+            <element signature="e#4914#4915#0" expanded="false" />
+            <element signature="e#5131#5132#0" expanded="false" />
+            <element signature="e#5193#5194#0" expanded="false" />
+            <element signature="e#5277#5278#0" expanded="false" />
+            <element signature="e#5301#5302#0" expanded="false" />
+            <element signature="e#5525#5526#0" expanded="false" />
+            <element signature="e#5587#5588#0" expanded="false" />
+            <element signature="e#6709#6710#0" expanded="false" />
+            <element signature="e#6771#6772#0" expanded="false" />
+            <element signature="e#6886#6887#0" expanded="false" />
+            <element signature="e#6912#6913#0" expanded="false" />
+            <element signature="e#12460#12461#0" expanded="false" />
+            <element signature="e#12566#12567#0" expanded="false" />
+            <element signature="e#13065#13066#0" expanded="false" />
+            <element signature="e#13116#13117#0" expanded="false" />
+            <element signature="e#13436#13437#0" expanded="false" />
+            <element signature="e#13474#13475#0" expanded="false" />
+            <element signature="e#13832#13833#0" expanded="false" />
+            <element signature="e#13891#13892#0" expanded="false" />
+            <element signature="e#17461#17462#0" expanded="false" />
+            <element signature="e#17527#17528#0" expanded="false" />
+            <element signature="e#17619#17620#0" expanded="false" />
+            <element signature="e#17647#17648#0" expanded="false" />
+            <element signature="e#18257#18258#0" expanded="false" />
+            <element signature="e#18323#18324#0" expanded="false" />
+            <element signature="e#20330#20331#0" expanded="false" />
+            <element signature="e#20396#20397#0" expanded="false" />
+            <element signature="e#20519#20520#0" expanded="false" />
+            <element signature="e#20549#20550#0" expanded="false" />
+            <element signature="e#21680#21681#0" expanded="false" />
+            <element signature="e#21707#21708#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/main/java/cl/uandes/so/client/FileAnnouncement.proto">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.2264151">
+          <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="44" column="18" selection-start-line="44" selection-start-column="18" selection-end-line="44" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/main/java/cl/uandes/so/client/FileAnnouncementProtos.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="536" column="67" selection-start-line="536" selection-start-column="67" selection-end-line="536" selection-end-column="67" />
+          <folding>
+            <element signature="e#0#28250#0" expanded="false" />
+            <element signature="e#2236#2237#0" expanded="false" />
+            <element signature="e#2272#2273#0" expanded="false" />
+            <element signature="e#2331#2332#0" expanded="false" />
+            <element signature="e#2367#2368#0" expanded="false" />
+            <element signature="e#2533#2534#0" expanded="false" />
+            <element signature="e#2572#2573#0" expanded="false" />
+            <element signature="e#5542#5543#0" expanded="false" />
+            <element signature="e#5569#5570#0" expanded="false" />
+            <element signature="e#5821#5822#0" expanded="false" />
+            <element signature="e#5883#5884#0" expanded="false" />
+            <element signature="e#7003#7004#0" expanded="false" />
+            <element signature="e#7065#7066#0" expanded="false" />
+            <element signature="e#8180#8181#0" expanded="false" />
+            <element signature="e#8242#8243#0" expanded="false" />
+            <element signature="e#8338#8339#0" expanded="false" />
+            <element signature="e#8368#8369#0" expanded="false" />
+            <element signature="e#8602#8603#0" expanded="false" />
+            <element signature="e#8664#8665#0" expanded="false" />
+            <element signature="e#8766#8767#0" expanded="false" />
+            <element signature="e#8799#8800#0" expanded="false" />
+            <element signature="e#15506#15507#0" expanded="false" />
+            <element signature="e#15557#15558#0" expanded="false" />
+            <element signature="e#15877#15878#0" expanded="false" />
+            <element signature="e#15915#15916#0" expanded="false" />
+            <element signature="e#16324#16325#0" expanded="false" />
+            <element signature="e#16383#16384#0" expanded="false" />
+            <element signature="e#20533#20534#0" expanded="false" />
+            <element signature="e#20599#20600#0" expanded="false" />
+            <element signature="e#22566#22567#0" expanded="false" />
+            <element signature="e#22632#22633#0" expanded="false" />
+            <element signature="e#24590#24591#0" expanded="false" />
+            <element signature="e#24656#24657#0" expanded="false" />
+            <element signature="e#24760#24761#0" expanded="false" />
+            <element signature="e#24794#24795#0" expanded="false" />
+            <element signature="e#25443#25444#0" expanded="false" />
+            <element signature="e#25509#25510#0" expanded="false" />
+            <element signature="e#25619#25620#0" expanded="false" />
+            <element signature="e#25656#25657#0" expanded="false" />
+            <element signature="e#26728#26729#0" expanded="false" />
+            <element signature="e#26755#26756#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/main/java/cl/uandes/so/client/FileTransfer.proto">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/main/java/cl/uandes/so/client/FileTransferProtos.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="686" column="44" selection-start-line="686" selection-start-column="44" selection-end-line="686" selection-end-column="44" />
+          <folding>
+            <element signature="e#0#23089#0" expanded="false" />
+            <element signature="e#1798#1799#0" expanded="false" />
+            <element signature="e#1834#1835#0" expanded="false" />
+            <element signature="e#1889#1890#0" expanded="false" />
+            <element signature="e#1925#1926#0" expanded="false" />
+            <element signature="e#2091#2092#0" expanded="false" />
+            <element signature="e#2130#2131#0" expanded="false" />
+            <element signature="e#3880#3881#0" expanded="false" />
+            <element signature="e#3982#3983#0" expanded="false" />
+            <element signature="e#4887#4888#0" expanded="false" />
+            <element signature="e#4914#4915#0" expanded="false" />
+            <element signature="e#5131#5132#0" expanded="false" />
+            <element signature="e#5193#5194#0" expanded="false" />
+            <element signature="e#5277#5278#0" expanded="false" />
+            <element signature="e#5301#5302#0" expanded="false" />
+            <element signature="e#5525#5526#0" expanded="false" />
+            <element signature="e#5587#5588#0" expanded="false" />
+            <element signature="e#6709#6710#0" expanded="false" />
+            <element signature="e#6771#6772#0" expanded="false" />
+            <element signature="e#6886#6887#0" expanded="false" />
+            <element signature="e#6912#6913#0" expanded="false" />
+            <element signature="e#12460#12461#0" expanded="false" />
+            <element signature="e#12566#12567#0" expanded="false" />
+            <element signature="e#13065#13066#0" expanded="false" />
+            <element signature="e#13116#13117#0" expanded="false" />
+            <element signature="e#13436#13437#0" expanded="false" />
+            <element signature="e#13474#13475#0" expanded="false" />
+            <element signature="e#13832#13833#0" expanded="false" />
+            <element signature="e#13891#13892#0" expanded="false" />
+            <element signature="e#17461#17462#0" expanded="false" />
+            <element signature="e#17527#17528#0" expanded="false" />
+            <element signature="e#17619#17620#0" expanded="false" />
+            <element signature="e#17647#17648#0" expanded="false" />
+            <element signature="e#18257#18258#0" expanded="false" />
+            <element signature="e#18323#18324#0" expanded="false" />
+            <element signature="e#20330#20331#0" expanded="false" />
+            <element signature="e#20396#20397#0" expanded="false" />
+            <element signature="e#20519#20520#0" expanded="false" />
+            <element signature="e#20549#20550#0" expanded="false" />
+            <element signature="e#21680#21681#0" expanded="false" />
+            <element signature="e#21707#21708#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/main/java/cl/uandes/so/client/LoginClientHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="24" column="4" selection-start-line="24" selection-start-column="4" selection-end-line="24" selection-end-column="4" />
+          <folding>
+            <element signature="e#0#1721#0" expanded="false" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#681#682#0" expanded="false" />
+            <element signature="e#719#720#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/main/java/cl/uandes/so/client/Utils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="8" column="5" selection-start-line="8" selection-start-column="5" selection-end-line="8" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/src/main/java/cl/uandes/so/server/Utils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="28" column="51" selection-start-line="28" selection-start-column="51" selection-end-line="28" selection-end-column="51" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/src/main/java/cl/uandes/so/server/LoginServer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="24" column="18" selection-start-line="24" selection-start-column="18" selection-end-line="24" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/main/java/cl/uandes/so/client/MultiCastClientHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="50" column="32" selection-start-line="50" selection-start-column="32" selection-end-line="50" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/server/src/main/java/cl/uandes/so/server/App.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.82976043">
-          <caret line="192" column="17" selection-start-line="192" selection-start-column="17" selection-end-line="192" selection-end-column="17" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="200" column="0" selection-start-line="200" selection-start-column="0" selection-end-line="201" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#5762#5999#0" expanded="true" />
-            <element signature="e#5998#5999#0" expanded="true" />
-            <element signature="e#7206#7650#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/main/java/cl/uandes/so/client/App.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.81796116">
+          <caret line="123" column="36" selection-start-line="123" selection-start-column="36" selection-end-line="123" selection-end-column="36" />
+          <folding />
         </state>
       </provider>
     </entry>

@@ -23,10 +23,10 @@ public class MultiCastClientHandler extends SimpleChannelInboundHandler<Datagram
         if(msg.content().readableBytes() < 6) {
             return;
         }
-        msg.content().readByte();
-        msg.content().readByte();
-        msg.content().readByte();
-        msg.content().readByte();
+        msg.content().readByte(); //0xFF
+        msg.content().readByte(); //0xFF
+        msg.content().readByte(); //0xFF
+        msg.content().readByte(); //0xFF
         
         // Payload type
         char a = (char)msg.content().readByte();
@@ -41,6 +41,14 @@ public class MultiCastClientHandler extends SimpleChannelInboundHandler<Datagram
                 System.out.println("A packet received - Length: " +  Utils.getShortFromLittleEndianRange(a_length));
                 payload = msg.content().readBytes(msg.content().readableBytes()).array();
                 // TODO: Deserializar payload con protobuf
+                FileAnnouncementProtos.FileAnnouncement fa = FileAnnouncementProtos.FileAnnouncement.parseFrom(payload);
+                System.out.println("===============================================");
+                System.out.println("Announcement Packet Received");
+                System.out.println(" >cheksum: "+fa.getChecksum());
+                System.out.println(" >fileName: "+fa.getFileName());
+                System.out.println(" >fileSize: "+fa.getFileSize());
+                System.out.println(" >chunksTotal: "+fa.getChunksTotal());
+                System.out.println("===============================================");
                 break;
             case 'B':
                 length = msg.content().readShort();

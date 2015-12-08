@@ -1,0 +1,11 @@
+package so;
+
+option java_package = "cl.uandes.so.server";
+option java_outer_classname = "FileTransferProtos";
+
+message FileFragment {
+  required int32 id = 1;
+  required string checksum = 2;
+  required bytes data = 3;
+
+}

@@ -153,7 +153,7 @@ public class App
         // Checksum del archivo
         String checksum;
         try {
-            checksum = Utils.SHAsum(filecontent);
+            checksum = Utils.SHAsum(concatBytes);
             final FileAnnouncementChunk fac = new FileAnnouncementChunk(checksum,f.getName(),f.length(), fragments.size());
 
             EventLoopGroup group = new NioEventLoopGroup();
@@ -167,6 +167,7 @@ public class App
                     // Nothing will be sent.
                 }
             });
+
             NetworkInterface nif = NetworkInterface.getByInetAddress(InetAddress.getLocalHost());
             sb.option(ChannelOption.IP_MULTICAST_IF, nif);
             sb.option(ChannelOption.SO_REUSEADDR, true);
