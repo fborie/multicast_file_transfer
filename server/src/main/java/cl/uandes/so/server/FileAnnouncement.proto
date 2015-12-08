@@ -8,6 +8,5 @@ message FileAnnouncement {
   required string fileName = 2;
   required int32 fileSize = 3;
   required int32 chunksTotal = 4;
-  required int32 chunksize = 5;
 
 }
