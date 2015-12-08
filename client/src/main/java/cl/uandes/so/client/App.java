@@ -31,13 +31,14 @@ public class App
     public static void main( String[] args ) throws InterruptedException, UnknownHostException, SocketException
     {
 
-        if(args.length <=1){
-            System.out.println("usage: java -jar target/client.jat <server_login_ip> <server_login_port>");
+        if(args.length <=2){
+            System.out.println("usage: java -jar target/client.jat <IP_iface> <server_login_ip> <server_login_port>");
             System.exit(1);
         }
 
-        String serverLoginIp = args[0];
-        int serverLoginPort = Integer.parseInt(args[1]);
+        String ipIface = args[0];
+        String serverLoginIp = args[1];
+        int serverLoginPort = Integer.parseInt(args[2]);
 
         StringBuilder multicast_address = new StringBuilder();
         System.out.println("Trying to connect to server...");
@@ -100,7 +101,7 @@ public class App
         System.out.println("Multicast Port: "+port);
         
         
-        NetworkInterface nif = NetworkInterface.getByInetAddress(InetAddress.getLocalHost());
+        NetworkInterface nif = NetworkInterface.getByInetAddress(InetAddress.getByName(ipIface)); //Get eth0 or current iface by the ip given in the args[0]
         cb.localAddress(port);
         cb.option(ChannelOption.SO_BROADCAST, true)
                             .option(ChannelOption.SO_REUSEADDR, true)

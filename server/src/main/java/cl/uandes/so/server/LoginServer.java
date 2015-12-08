@@ -48,15 +48,30 @@ public class LoginServer {
                 public void run() {
                     System.out.println("Login Server will stop in 60 seconds...");
                     try {
-                        Thread.sleep(60000);
+                        Thread.sleep(10000);
                     } catch (InterruptedException ex) {
                         Logger.getLogger(LoginServer.class.getName()).log(Level.SEVERE, null, ex);
                     }
                    group.shutdownGracefully();
                     
                 }
-            });  
+            });
+            Thread t2 = new Thread(new Runnable() {
+                public void run() {
+                    int counter = 1;
+                    while(counter<10){
+                        System.out.println("Time : "+counter);
+                        try {
+                            Thread.sleep(1000);
+                            counter++;
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }
+            });
             t1.start();
+            t2.start();
             Bootstrap b = new Bootstrap(); // (2)
             b.group(group)
              .channel(NioDatagramChannel.class) // (3)

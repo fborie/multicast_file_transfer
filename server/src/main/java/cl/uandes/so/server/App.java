@@ -54,10 +54,13 @@ public class App
 {
     public static void main( String[] args ) throws IOException
     {
-        if(args.length <= 0) {
-            System.out.println("usage: java -jar server.jar <filename>");
+        if(args.length <= 1) {
+            System.out.println("usage: java -jar server.jar <filename> <IP_iface> <login_server_port>");
             System.exit(1);
         }
+
+        String ipIface = args[1];
+        int loginPort = Integer.parseInt(args[2]);
         File f = new File(args[0]);
         if(!f.exists() || !f.canRead()) {
             System.out.println(String.format("File %s not found or access denied.", args[0]));
@@ -135,7 +138,7 @@ public class App
         System.out.println("Starting socket...");
         String multicast_address = "239.1.2.3:1111";
         
-        LoginServer ls = new LoginServer(9988, multicast_address);
+        LoginServer ls = new LoginServer(loginPort, multicast_address);
         
         try {
          ls.run();
@@ -168,7 +171,7 @@ public class App
                 }
             });
 
-            NetworkInterface nif = NetworkInterface.getByInetAddress(InetAddress.getLocalHost());
+            NetworkInterface nif = NetworkInterface.getByInetAddress(InetAddress.getByName(ipIface)); // get eth0 o current iface that has assigned your local ipv4
             sb.option(ChannelOption.IP_MULTICAST_IF, nif);
             sb.option(ChannelOption.SO_REUSEADDR, true);
             sb.channel(NioDatagramChannel.class);
@@ -211,6 +214,7 @@ public class App
                         ByteBuf pckt = Unpooled.copiedBuffer(header, bytelength, message );
                         DatagramPacket a = new DatagramPacket(pckt, new InetSocketAddress(ip_address, port));
                         sc.writeAndFlush(a);
+                        System.out.println();
                         System.out.println("File Announcement Sent... Length: "+ length);
                         try {
                             Thread.sleep(50);

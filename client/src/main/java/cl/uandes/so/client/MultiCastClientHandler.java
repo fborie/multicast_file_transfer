@@ -38,7 +38,8 @@ public class MultiCastClientHandler extends SimpleChannelInboundHandler<Datagram
             // File Announcement
             case 'A':
                 byte[] a_length = {msg.content().readByte(), msg.content().readByte()};
-                System.out.println("A packet received - Length: " +  Utils.getShortFromLittleEndianRange(a_length));
+                System.out.println();
+                System.out.println("[A] packet received - Length: " +  Utils.getShortFromLittleEndianRange(a_length));
                 payload = msg.content().readBytes(msg.content().readableBytes()).array();
                 // TODO: Deserializar payload con protobuf
                 FileAnnouncementProtos.FileAnnouncement fa = FileAnnouncementProtos.FileAnnouncement.parseFrom(payload);
@@ -52,12 +53,14 @@ public class MultiCastClientHandler extends SimpleChannelInboundHandler<Datagram
                 break;
             case 'B':
                 length = msg.content().readShort();
-                System.out.println("A packet received - Length: " + length);
+                System.out.println();
+                System.out.println("[B] packet received - Length: " + length);
                 payload = msg.content().readBytes(msg.content().readableBytes()).array();
                 break;
             case 'C':                
                 byte[] c_length = {msg.content().readByte(), msg.content().readByte()};
-                System.out.println("A packet received - Length: " + Utils.getShortFromLittleEndianRange(c_length));
+                System.out.println();
+                System.out.println("[C] packet received - Length: " + Utils.getShortFromLittleEndianRange(c_length));
                 payload = msg.content().readBytes(msg.content().readableBytes()).array();
                 break;
             default:

@@ -49,7 +49,7 @@ class LoginServerHandler extends SimpleChannelInboundHandler<DatagramPacket> {
         
         System.out.println(Utils.byteArray2Hex(data.array()));
         if(Utils.byteArray2Hex(data.array()).equals(Utils.byteArray2Hex(payload) )) {
-            System.out.println("Got login, sending multicast group address (header+multicastgroup");
+            System.out.println("Got login of client, sending multicast group address (header+multicastgroup)");
             ctx.write(new DatagramPacket(
                     Unpooled.copiedBuffer(ArrayUtils.addAll(header, multicastgroup.getBytes())), packet.sender()));
         } 
