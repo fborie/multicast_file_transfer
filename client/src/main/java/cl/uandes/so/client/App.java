@@ -45,7 +45,7 @@ public class App
         int maxtries = 3;
         int tries = 1;
         while (tries <= maxtries) {
-            System.out.println(String.format("== Try #%d ==", tries));
+            System.out.format("== Try #%d ==", tries);
             EventLoopGroup group = new NioEventLoopGroup();
             try {
                 Bootstrap b = new Bootstrap();
@@ -78,7 +78,7 @@ public class App
             }
         }
         if(tries == maxtries+1) {
-            System.out.println(String.format("Gave up after %d tries", maxtries));
+            System.out.format("Gave up after %d tries", maxtries);
             System.exit(1);
         }
         
@@ -94,10 +94,10 @@ public class App
                                     });
         cb.handler(new MultiCastClientHandler());
         String ip_address = multicast_address.substring(0, multicast_address.indexOf(":"));
-        System.out.println(ip_address);
+        System.out.println("Multicast IP: "+ip_address);
         
         int port = Integer.parseInt(multicast_address.substring(multicast_address.indexOf(":")+1, multicast_address.length()));
-        System.out.println(port);
+        System.out.println("Multicast Port: "+port);
         
         
         NetworkInterface nif = NetworkInterface.getByInetAddress(InetAddress.getLocalHost());
