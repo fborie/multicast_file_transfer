@@ -29,10 +29,15 @@ import com.google.protobuf.ByteString;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.bootstrap.ChannelFactory;
 import io.netty.buffer.ByteBuf;
+import io.netty.buffer.Unpooled;
+import io.netty.channel.Channel;
+import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelOption;
 import io.netty.channel.EventLoopGroup;
+import io.netty.channel.SimpleChannelInboundHandler;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.DatagramChannel;
+import io.netty.channel.socket.DatagramPacket;
 import io.netty.channel.socket.InternetProtocolFamily;
 import io.netty.channel.socket.nio.NioDatagramChannel;
 import org.apache.commons.lang3.ArrayUtils;
@@ -145,14 +150,31 @@ public class App
         byte[] chunksTotal = Ints.toByteArray(fragments.size());
         byte[] aux = ArrayUtils.addAll(filename,fileSize);
         byte[] concatBytes = ArrayUtils.addAll(aux,chunksTotal);
+        // Checksum del archivo
         String checksum;
         try {
-            checksum = Utils.SHAsum(concatBytes);
-            final FileAnnouncementChunk fac = new FileAnnouncementChunk(checksum,args[0],f.length(), fragments.size());
+            checksum = Utils.SHAsum(filecontent);
+            final FileAnnouncementChunk fac = new FileAnnouncementChunk(checksum,f.getName(),f.length(), fragments.size());
 
             EventLoopGroup group = new NioEventLoopGroup();
+            EventLoopGroup group2 = new NioEventLoopGroup();
             Bootstrap cb = new Bootstrap();
-
+            Bootstrap sb = new Bootstrap();
+            
+            sb.handler(new SimpleChannelInboundHandler<Object>() {
+                @Override
+                protected void channelRead0(ChannelHandlerContext ctx, Object msg) throws Exception {
+                    // Nothing will be sent.
+                }
+            });
+            NetworkInterface nif = NetworkInterface.getByInetAddress(InetAddress.getLocalHost());
+            sb.option(ChannelOption.IP_MULTICAST_IF, nif);
+            sb.option(ChannelOption.SO_REUSEADDR, true);
+            sb.channel(NioDatagramChannel.class);
+            sb.localAddress(27005);
+            sb.group(group2);
+            final Channel sc = sb.bind().sync().channel();
+            
             cb.channelFactory(new ChannelFactory<NioDatagramChannel>() {
                 @Override
                 public NioDatagramChannel newChannel() {
@@ -160,30 +182,35 @@ public class App
                 }
             });
             cb.handler(new MulticastServerHandler());
-            String ip_address = multicast_address.substring(0, multicast_address.indexOf(":"));
-            System.out.println("Multicast IP: "+ip_address);
-
-            int port = Integer.parseInt(multicast_address.substring(multicast_address.indexOf(":")+1, multicast_address.length()));
-            System.out.println("Multicast Port: "+port);
+            final String ip_address = multicast_address.substring(0, multicast_address.indexOf(":"));
+            final int port = Integer.parseInt(multicast_address.substring(multicast_address.indexOf(":")+1, multicast_address.length()));
 
 
-            NetworkInterface nif = NetworkInterface.getByInetAddress(InetAddress.getLocalHost());
+           
             cb.localAddress(port);
             cb.option(ChannelOption.SO_BROADCAST, true)
                     .option(ChannelOption.SO_REUSEADDR, true)
                     .option(ChannelOption.IP_MULTICAST_LOOP_DISABLED, false)
                     .option(ChannelOption.SO_RCVBUF, 2048)
-                    .option(ChannelOption.IP_MULTICAST_TTL, 255)
+                    //.option(ChannelOption.IP_MULTICAST_TTL, 255)
                     .option(ChannelOption.IP_MULTICAST_IF, nif);
             cb.group(group);
 //        cb.channel(NioDatagramChannel.class);
             final DatagramChannel cc = (DatagramChannel) cb.bind().sync().channel();
             cc.joinGroup(new InetSocketAddress(ip_address, port), nif).sync();
-
+            final byte[] header = {(byte)0xFF, (byte)0xFF, (byte)0xFF, (byte)0xFF, (byte)0x41};
+            
+            
             Thread announcer = new Thread(new Runnable() {
                 public void run() {
                     for(int i=0;i<4;i++){
-                        cc.writeAndFlush(Utils.generateFileAnnouncementMessage(fac));
+                        byte[] message = Utils.generateFileAnnouncementMessage(fac).toByteArray();
+                        short length = (short)message.length;
+                        byte[] bytelength = {(byte)(length & 0xff), (byte)((length >> 8) & 0xff)}; 
+                        ByteBuf pckt = Unpooled.copiedBuffer(header, bytelength, message );
+                        DatagramPacket a = new DatagramPacket(pckt, new InetSocketAddress(ip_address, port));
+                        sc.writeAndFlush(a);
+                        System.out.println("File Announcement Sent... Length: "+ length);
                         try {
                             Thread.sleep(50);
                         } catch (InterruptedException e) {
@@ -194,7 +221,7 @@ public class App
             });
 
             announcer.start();
-
+            Thread.sleep(5000);
 
         } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();

@@ -33,20 +33,23 @@ public class MultiCastClientHandler extends SimpleChannelInboundHandler<Datagram
         byte[] ab = {(byte)a};
         short length;
         byte[] payload;
+        byte[] shortlength;
         switch(a) {
+            // File Announcement
             case 'A':
-                length = msg.content().readShort();
-                System.out.println("A packet received - Length: " + length);
+                byte[] a_length = {msg.content().readByte(), msg.content().readByte()};
+                System.out.println("A packet received - Length: " +  Utils.getShortFromLittleEndianRange(a_length));
                 payload = msg.content().readBytes(msg.content().readableBytes()).array();
+                // TODO: Deserializar payload con protobuf
                 break;
             case 'B':
                 length = msg.content().readShort();
                 System.out.println("A packet received - Length: " + length);
                 payload = msg.content().readBytes(msg.content().readableBytes()).array();
                 break;
-            case 'C':
-                length = msg.content().readShort();
-                System.out.println("A packet received - Length: " + length);
+            case 'C':                
+                byte[] c_length = {msg.content().readByte(), msg.content().readByte()};
+                System.out.println("A packet received - Length: " + Utils.getShortFromLittleEndianRange(c_length));
                 payload = msg.content().readBytes(msg.content().readableBytes()).array();
                 break;
             default:

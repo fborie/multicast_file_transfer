@@ -2,6 +2,7 @@ package cl.uandes.so.server;
 
 import cl.uandes.so.server.FileAnnouncementProtos.FileAnnouncement;
 import cl.uandes.so.server.FileAnnouncementProtos.FileAnnouncementOrBuilder;
+import com.google.common.primitives.Ints;
 import com.google.protobuf.ByteString;
 
 import java.security.MessageDigest;
@@ -17,7 +18,7 @@ public class Utils {
         FileAnnouncementProtos.FileAnnouncement fa = FileAnnouncementProtos.FileAnnouncement.newBuilder()
                 .setChecksum(fileAnnouncementChunk.GetChecksum())
                 .setFileName(fileAnnouncementChunk.GetFileName())
-                .setFileSize(fileAnnouncementChunk.GetFileSize())
+                .setFileSize(Ints.checkedCast(fileAnnouncementChunk.GetFileSize())  )
                 .setChunksTotal(fileAnnouncementChunk.GetChunksTotal())
                 .build();
         return fa;
