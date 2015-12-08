@@ -1,0 +1,12 @@
+package so;
+
+option java_package = "cl.uandes.so.server";
+option java_outer_classname = "FileAnnouncementProtos";
+
+message FileAnnouncementMessage {
+  required string checksum = 1;
+  required string fileName = 2;
+  required int32 fileSize = 3;
+  required int32 chunksTotal = 4;
+  required int32 chunkSize = 5;
+}

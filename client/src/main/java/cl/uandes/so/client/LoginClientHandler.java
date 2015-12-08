@@ -38,8 +38,6 @@ class LoginClientHandler  extends SimpleChannelInboundHandler<DatagramPacket> {
             ByteBuf data = msg.content().readBytes(msg.content().readableBytes());
             ip += new String(data.array());
             //System.out.println(byteArray2Hex(data.array()));
-            
-            
             this.address.append(ip);
             ctx.close();
         }
