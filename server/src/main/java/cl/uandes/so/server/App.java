@@ -4,6 +4,10 @@ package cl.uandes.so.server;
 import java.io.File;
 import java.io.IOException;
 //import java.io.ByteArrayOutputStream;
+import java.net.InetAddress;
+import java.net.InetSocketAddress;
+import java.net.NetworkInterface;
+import java.nio.ByteBuffer;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -16,11 +20,22 @@ import java.util.Formatter;
 // protoc -I=main/java/cl/uandes/so/server/ --java_out main/java/ main/java/cl/uandes/so/server/FileTransfer.proto
 import cl.uandes.so.server.FileTransferProtos.FileFragment;
 import cl.uandes.so.server.FileTransferProtos.FileFragmentOrBuilder;
+import com.google.common.primitives.Ints;
+import com.google.common.primitives.Longs;
 import com.google.protobuf.MessageOrBuilder;
 import com.google.protobuf.ByteString;
 
 // Netty
+import io.netty.bootstrap.Bootstrap;
+import io.netty.bootstrap.ChannelFactory;
 import io.netty.buffer.ByteBuf;
+import io.netty.channel.ChannelOption;
+import io.netty.channel.EventLoopGroup;
+import io.netty.channel.nio.NioEventLoopGroup;
+import io.netty.channel.socket.DatagramChannel;
+import io.netty.channel.socket.InternetProtocolFamily;
+import io.netty.channel.socket.nio.NioDatagramChannel;
+import org.apache.commons.lang3.ArrayUtils;
 
 //import java.nio.file.Paths;
 
@@ -86,7 +101,7 @@ public class App
             Fragment chunk = (Fragment)item;
             String checksum = "";
             try {
-            checksum = SHAsum(Arrays.copyOfRange(filecontent, (int)chunk.start, (int)chunk.end+1));
+            checksum = Utils.SHAsum(Arrays.copyOfRange(filecontent, (int)chunk.start, (int)chunk.end+1));
             } catch (NoSuchAlgorithmException e) {
                 System.out.println("Couldn't find SHA1 algorithm...");
                 System.exit(1);
@@ -113,42 +128,83 @@ public class App
         
         // TODO: Netty
         System.out.println("Starting socket...");
+        String multicast_address = "239.1.2.3:1111";
         
-        LoginServer ls = new LoginServer(9988, "239.1.2.3:1111");
+        LoginServer ls = new LoginServer(9988, multicast_address);
         
         try {
          ls.run();
         } catch(Exception e) {
             System.out.println(e.toString());
         }
+
+
+        System.out.println("File Announcement");
+        byte[] filename = args[0].getBytes();
+        byte[] fileSize = Longs.toByteArray(f.length());
+        byte[] chunksTotal = Ints.toByteArray(fragments.size());
+        byte[] aux = ArrayUtils.addAll(filename,fileSize);
+        byte[] concatBytes = ArrayUtils.addAll(aux,chunksTotal);
+        String checksum;
+        try {
+            checksum = Utils.SHAsum(concatBytes);
+            final FileAnnouncementChunk fac = new FileAnnouncementChunk(checksum,args[0],f.length(), fragments.size());
+
+            EventLoopGroup group = new NioEventLoopGroup();
+            Bootstrap cb = new Bootstrap();
+
+            cb.channelFactory(new ChannelFactory<NioDatagramChannel>() {
+                @Override
+                public NioDatagramChannel newChannel() {
+                    return new NioDatagramChannel(InternetProtocolFamily.IPv4);
+                }
+            });
+            cb.handler(new MulticastServerHandler());
+            String ip_address = multicast_address.substring(0, multicast_address.indexOf(":"));
+            System.out.println("Multicast IP: "+ip_address);
+
+            int port = Integer.parseInt(multicast_address.substring(multicast_address.indexOf(":")+1, multicast_address.length()));
+            System.out.println("Multicast Port: "+port);
+
+
+            NetworkInterface nif = NetworkInterface.getByInetAddress(InetAddress.getLocalHost());
+            cb.localAddress(port);
+            cb.option(ChannelOption.SO_BROADCAST, true)
+                    .option(ChannelOption.SO_REUSEADDR, true)
+                    .option(ChannelOption.IP_MULTICAST_LOOP_DISABLED, false)
+                    .option(ChannelOption.SO_RCVBUF, 2048)
+                    .option(ChannelOption.IP_MULTICAST_TTL, 255)
+                    .option(ChannelOption.IP_MULTICAST_IF, nif);
+            cb.group(group);
+//        cb.channel(NioDatagramChannel.class);
+            final DatagramChannel cc = (DatagramChannel) cb.bind().sync().channel();
+            cc.joinGroup(new InetSocketAddress(ip_address, port), nif).sync();
+
+            Thread announcer = new Thread(new Runnable() {
+                public void run() {
+                    for(int i=0;i<4;i++){
+                        cc.writeAndFlush(Utils.generateFileAnnouncementMessage(fac));
+                        try {
+                            Thread.sleep(50);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }
+            });
+
+            announcer.start();
+
+
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+
         System.out.println("Finish");
         
     }
-    public static String SHAsum(byte[] convertme) throws NoSuchAlgorithmException{
-        MessageDigest md = MessageDigest.getInstance("SHA-1"); 
-        return byteArray2Hex(md.digest(convertme));
-    }
 
-    public static String byteArray2Hex(final byte[] hash) {
-        Formatter formatter = new Formatter();
-        for (byte b : hash) {
-            formatter.format("%02x", b);
-        }
-        return formatter.toString();
-    }
-    
-    /**
-     * Función que genera un mensaje FileFragment de protobuf a partir de un fragmento y archivo dado.
-     * @param f Fragmento del cual se quiere generar el mensaje protobuf FileFragment
-     * @param filecontent Byte Array del archivo al que pertenece el fragmento indicado
-     * @return
-     */
-    public static FileFragment generateFileFragment(Fragment f, byte[] filecontent) {
-        FileFragment ff = FileFragment.newBuilder()
-                .setId((int)f.getID())
-                .setChecksum(f.checksum)
-                .setData(ByteString.copyFrom(filecontent, (int)f.start, (int)f.end))
-                .build();
-        return ff;
-    }
 }
