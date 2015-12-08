@@ -36,17 +36,17 @@ public class MultiCastClientHandler extends SimpleChannelInboundHandler<Datagram
         switch(a) {
             case 'A':
                 length = msg.content().readShort();
-                System.out.println("[A] packet received - Length: " + length);
+                System.out.println("A packet received - Length: " + length);
                 payload = msg.content().readBytes(msg.content().readableBytes()).array();
                 break;
             case 'B':
                 length = msg.content().readShort();
-                System.out.println("[B] packet received - Length: " + length);
+                System.out.println("A packet received - Length: " + length);
                 payload = msg.content().readBytes(msg.content().readableBytes()).array();
                 break;
             case 'C':
                 length = msg.content().readShort();
-                System.out.println("[C] packet received - Length: " + length);
+                System.out.println("A packet received - Length: " + length);
                 payload = msg.content().readBytes(msg.content().readableBytes()).array();
                 break;
             default:
