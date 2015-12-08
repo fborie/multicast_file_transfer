@@ -18,8 +18,9 @@ import io.netty.buffer.ByteBuf;
  * @author rodrigo
  */
 class LoginClientHandler  extends SimpleChannelInboundHandler<DatagramPacket> {
-
-    public LoginClientHandler() {
+    private StringBuilder address;
+    public LoginClientHandler(StringBuilder address) {
+        this.address = address;
     }
     
     @Override
@@ -38,7 +39,8 @@ class LoginClientHandler  extends SimpleChannelInboundHandler<DatagramPacket> {
             ip += new String(data.array());
             //System.out.println(byteArray2Hex(data.array()));
             
-            System.out.println("Got Multicast Address: " + ip);
+            
+            this.address.append(ip);
             ctx.close();
         }
         

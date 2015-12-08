@@ -114,7 +114,7 @@ public class App
         // TODO: Netty
         System.out.println("Starting socket...");
         
-        LoginServer ls = new LoginServer(9988, "1.1.1.1:1111");
+        LoginServer ls = new LoginServer(9988, "239.1.2.3:1111");
         
         try {
          ls.run();
