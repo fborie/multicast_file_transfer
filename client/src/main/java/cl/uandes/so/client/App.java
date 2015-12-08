@@ -30,6 +30,15 @@ public class App
 {
     public static void main( String[] args ) throws InterruptedException, UnknownHostException, SocketException
     {
+
+        if(args.length <=1){
+            System.out.println("usage: java -jar target/client.jat <server_login_ip> <server_login_port>");
+            System.exit(1);
+        }
+
+        String serverLoginIp = args[0];
+        int serverLoginPort = Integer.parseInt(args[1]);
+
         StringBuilder multicast_address = new StringBuilder();
         System.out.println("Trying to connect to server...");
         
@@ -52,7 +61,7 @@ public class App
                 // Broadcast the QOTM request to port 8080.
                 ch.writeAndFlush(new DatagramPacket(
                         Unpooled.copiedBuffer( payload),
-                        new InetSocketAddress("127.0.0.1", 9988))).sync();
+                        new InetSocketAddress(serverLoginIp, serverLoginPort))).sync();
 
                 // QuoteOfTheMomentClientHandler will close the DatagramChannel when a
                 // response is received.  If the channel is not closed within 5 seconds,
