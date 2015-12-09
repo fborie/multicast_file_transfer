@@ -20,6 +20,7 @@ import java.util.Formatter;
 // protoc -I=main/java/cl/uandes/so/server/ --java_out main/java/ main/java/cl/uandes/so/server/FileTransfer.proto
 import cl.uandes.so.server.FileTransferProtos.FileFragment;
 import cl.uandes.so.server.FileTransferProtos.FileFragmentOrBuilder;
+
 import com.google.common.primitives.Ints;
 import com.google.common.primitives.Longs;
 import com.google.protobuf.MessageOrBuilder;
@@ -55,13 +56,14 @@ public class App
     public static void main( String[] args ) throws IOException
     {
         if(args.length <= 1) {
-            System.out.println("usage: java -jar server.jar <filename> <IP_iface> <login_server_port>");
+            System.out.println("usage: java -jar server.jar <filename> <IP_iface> <login_server_port> <MSS>");
             System.exit(1);
         }
-
+        
         String ipIface = args[1];
         int loginPort = Integer.parseInt(args[2]);
         File f = new File(args[0]);
+        final int MAX_SEGMENT_SIZE = Integer.parseInt(args[3]);
         if(!f.exists() || !f.canRead()) {
             System.out.println(String.format("File %s not found or access denied.", args[0]));
             System.exit(1);
@@ -71,7 +73,7 @@ public class App
         
         // Calcular numero de fragmentos necesarios para enviar archivos
         Long fragments_required = 1L;
-        while(1400*(fragments_required) < size) {
+        while(MAX_SEGMENT_SIZE*(fragments_required) < size) {
             fragments_required += 1;
         }
         
@@ -88,11 +90,11 @@ public class App
         long remaining_bytes = size;
         while(i < fragments_required) {
             Fragment chunk;
-            if(remaining_bytes > 1399) {
+            if(remaining_bytes > MAX_SEGMENT_SIZE-1) {
                // Full Fragment
-                chunk = new Fragment(i, bytecount, bytecount+1399);
-                bytecount += 1400;
-                remaining_bytes -= 1400;
+                chunk = new Fragment(i, bytecount, bytecount+MAX_SEGMENT_SIZE-1);
+                bytecount += MAX_SEGMENT_SIZE;
+                remaining_bytes -= MAX_SEGMENT_SIZE;
             } else {
                 // Debiera ser el último fragmento incompleto
                 // System.out.println("Fragmento incompleto");
@@ -156,7 +158,7 @@ public class App
         // Checksum del archivo
         String checksum;
         try {
-            checksum = Utils.SHAsum(concatBytes);
+            checksum = Utils.SHAsum(filecontent);
             final FileAnnouncementChunk fac = new FileAnnouncementChunk(checksum,f.getName(),f.length(), fragments.size());
 
             EventLoopGroup group = new NioEventLoopGroup();
@@ -185,7 +187,14 @@ public class App
                     return new NioDatagramChannel(InternetProtocolFamily.IPv4);
                 }
             });
-            cb.handler(new MulticastServerHandler());
+            
+            AppStatus appStatus = new AppStatus();
+            appStatus.requested_fragments = new boolean[fragments.size()];
+            for(i = 0; i < fragments.size(); i++) {
+                appStatus.requested_fragments[i] = false;
+            }
+            
+            cb.handler(new MulticastServerHandler(appStatus));
             final String ip_address = multicast_address.substring(0, multicast_address.indexOf(":"));
             final int port = Integer.parseInt(multicast_address.substring(multicast_address.indexOf(":")+1, multicast_address.length()));
 
@@ -226,7 +235,54 @@ public class App
             });
 
             announcer.start();
-            Thread.sleep(5000);
+            Thread.sleep(10000);
+            
+            
+            // 'C' Packet Header 
+            final byte[] filefragment_header = {(byte)0xff, (byte)0xff, (byte)0xff, (byte)0xff, (byte)0x43};
+            // Start sending chunks
+            for(i = 0; i < fragments.size(); i++) {
+                FileFragment payload = Utils.generateFileFragment((Fragment)fragments.get(i), filecontent);
+                short length = (short)payload.toByteArray().length;
+                byte[] bytelength = {(byte)(length & 0xff), (byte)((length >> 8) & 0xff)}; 
+                ByteBuf pckt = Unpooled.copiedBuffer(filefragment_header, bytelength, payload.toByteArray() );
+                        DatagramPacket a = new DatagramPacket(pckt, new InetSocketAddress(ip_address, port));
+                        sc.writeAndFlush(a);
+                Thread.sleep(1);
+                sc.writeAndFlush(a);
+                System.out.println("Sent Fragment " + i);
+            }
+            appStatus.isReceivingRequests = true;
+            Thread.sleep(3000);
+            int no_request_rounds = 0;
+            while(true) {
+                boolean gotRequests = false;
+                for(i = 0; i < appStatus.requested_fragments.length; i++) {
+                    if(appStatus.requested_fragments[i]) {
+                        no_request_rounds  = 0;
+                        gotRequests = true;
+                        FileFragment payload = Utils.generateFileFragment((Fragment)fragments.get(i), filecontent);
+                        short length = (short)payload.toByteArray().length;
+                        byte[] bytelength = {(byte)(length & 0xff), (byte)((length >> 8) & 0xff)}; 
+                        ByteBuf pckt = Unpooled.copiedBuffer(filefragment_header, bytelength, payload.toByteArray() );
+                        DatagramPacket a = new DatagramPacket(pckt, new InetSocketAddress(ip_address, port));
+                        sc.writeAndFlush(a);
+                        System.out.println("Sent requested fragment " + i);
+                        appStatus.requested_fragments[i] = false;
+                        Thread.sleep(1);
+                    }
+                }
+                if(!gotRequests) {
+                    no_request_rounds += 1;
+                }
+                if(no_request_rounds > 40) {
+                    System.out.println("It seems that all clients received the file.");
+                    group.shutdownGracefully();
+                    group2.shutdownGracefully();
+                    System.exit(0);
+                }
+                Thread.sleep(250);
+            }
 
         } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();

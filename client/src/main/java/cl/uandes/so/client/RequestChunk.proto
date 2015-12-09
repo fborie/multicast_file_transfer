@@ -1,0 +1,9 @@
+package so;
+
+option java_package = "cl.uandes.so.server";
+option java_outer_classname = "RequestChunkProtos";
+
+message RequestChunk {
+  required int32 ChunkNumber = 1;
+
+}

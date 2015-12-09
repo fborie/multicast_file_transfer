@@ -36,13 +36,33 @@ public final class FileTransferProtos {
     com.google.protobuf.ByteString
         getChecksumBytes();
 
-    // required bytes data = 3;
+    // required uint64 start = 3;
     /**
-     * <code>required bytes data = 3;</code>
+     * <code>required uint64 start = 3;</code>
+     */
+    boolean hasStart();
+    /**
+     * <code>required uint64 start = 3;</code>
+     */
+    long getStart();
+
+    // required uint64 end = 4;
+    /**
+     * <code>required uint64 end = 4;</code>
+     */
+    boolean hasEnd();
+    /**
+     * <code>required uint64 end = 4;</code>
+     */
+    long getEnd();
+
+    // required bytes data = 5;
+    /**
+     * <code>required bytes data = 5;</code>
      */
     boolean hasData();
     /**
-     * <code>required bytes data = 3;</code>
+     * <code>required bytes data = 5;</code>
      */
     com.google.protobuf.ByteString getData();
   }
@@ -107,8 +127,18 @@ public final class FileTransferProtos {
               checksum_ = input.readBytes();
               break;
             }
-            case 26: {
+            case 24: {
               bitField0_ |= 0x00000004;
+              start_ = input.readUInt64();
+              break;
+            }
+            case 32: {
+              bitField0_ |= 0x00000008;
+              end_ = input.readUInt64();
+              break;
+            }
+            case 42: {
+              bitField0_ |= 0x00000010;
               data_ = input.readBytes();
               break;
             }
@@ -211,17 +241,49 @@ public final class FileTransferProtos {
       }
     }
 
-    // required bytes data = 3;
-    public static final int DATA_FIELD_NUMBER = 3;
-    private com.google.protobuf.ByteString data_;
+    // required uint64 start = 3;
+    public static final int START_FIELD_NUMBER = 3;
+    private long start_;
     /**
-     * <code>required bytes data = 3;</code>
+     * <code>required uint64 start = 3;</code>
      */
-    public boolean hasData() {
+    public boolean hasStart() {
       return ((bitField0_ & 0x00000004) == 0x00000004);
     }
     /**
-     * <code>required bytes data = 3;</code>
+     * <code>required uint64 start = 3;</code>
+     */
+    public long getStart() {
+      return start_;
+    }
+
+    // required uint64 end = 4;
+    public static final int END_FIELD_NUMBER = 4;
+    private long end_;
+    /**
+     * <code>required uint64 end = 4;</code>
+     */
+    public boolean hasEnd() {
+      return ((bitField0_ & 0x00000008) == 0x00000008);
+    }
+    /**
+     * <code>required uint64 end = 4;</code>
+     */
+    public long getEnd() {
+      return end_;
+    }
+
+    // required bytes data = 5;
+    public static final int DATA_FIELD_NUMBER = 5;
+    private com.google.protobuf.ByteString data_;
+    /**
+     * <code>required bytes data = 5;</code>
+     */
+    public boolean hasData() {
+      return ((bitField0_ & 0x00000010) == 0x00000010);
+    }
+    /**
+     * <code>required bytes data = 5;</code>
      */
     public com.google.protobuf.ByteString getData() {
       return data_;
@@ -230,6 +292,8 @@ public final class FileTransferProtos {
     private void initFields() {
       id_ = 0;
       checksum_ = "";
+      start_ = 0L;
+      end_ = 0L;
       data_ = com.google.protobuf.ByteString.EMPTY;
     }
     private byte memoizedIsInitialized = -1;
@@ -242,6 +306,14 @@ public final class FileTransferProtos {
         return false;
       }
       if (!hasChecksum()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasStart()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasEnd()) {
         memoizedIsInitialized = 0;
         return false;
       }
@@ -263,7 +335,13 @@ public final class FileTransferProtos {
         output.writeBytes(2, getChecksumBytes());
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        output.writeBytes(3, data_);
+        output.writeUInt64(3, start_);
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        output.writeUInt64(4, end_);
+      }
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        output.writeBytes(5, data_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -284,7 +362,15 @@ public final class FileTransferProtos {
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(3, data_);
+          .computeUInt64Size(3, start_);
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt64Size(4, end_);
+      }
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(5, data_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -406,8 +492,12 @@ public final class FileTransferProtos {
         bitField0_ = (bitField0_ & ~0x00000001);
         checksum_ = "";
         bitField0_ = (bitField0_ & ~0x00000002);
-        data_ = com.google.protobuf.ByteString.EMPTY;
+        start_ = 0L;
         bitField0_ = (bitField0_ & ~0x00000004);
+        end_ = 0L;
+        bitField0_ = (bitField0_ & ~0x00000008);
+        data_ = com.google.protobuf.ByteString.EMPTY;
+        bitField0_ = (bitField0_ & ~0x00000010);
         return this;
       }
 
@@ -447,6 +537,14 @@ public final class FileTransferProtos {
         if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
           to_bitField0_ |= 0x00000004;
         }
+        result.start_ = start_;
+        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
+          to_bitField0_ |= 0x00000008;
+        }
+        result.end_ = end_;
+        if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
+          to_bitField0_ |= 0x00000010;
+        }
         result.data_ = data_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
@@ -472,6 +570,12 @@ public final class FileTransferProtos {
           checksum_ = other.checksum_;
           onChanged();
         }
+        if (other.hasStart()) {
+          setStart(other.getStart());
+        }
+        if (other.hasEnd()) {
+          setEnd(other.getEnd());
+        }
         if (other.hasData()) {
           setData(other.getData());
         }
@@ -485,6 +589,14 @@ public final class FileTransferProtos {
           return false;
         }
         if (!hasChecksum()) {
+          
+          return false;
+        }
+        if (!hasStart()) {
+          
+          return false;
+        }
+        if (!hasEnd()) {
           
           return false;
         }
@@ -621,37 +733,103 @@ public final class FileTransferProtos {
         return this;
       }
 
-      // required bytes data = 3;
-      private com.google.protobuf.ByteString data_ = com.google.protobuf.ByteString.EMPTY;
+      // required uint64 start = 3;
+      private long start_ ;
       /**
-       * <code>required bytes data = 3;</code>
+       * <code>required uint64 start = 3;</code>
        */
-      public boolean hasData() {
+      public boolean hasStart() {
         return ((bitField0_ & 0x00000004) == 0x00000004);
       }
       /**
-       * <code>required bytes data = 3;</code>
+       * <code>required uint64 start = 3;</code>
+       */
+      public long getStart() {
+        return start_;
+      }
+      /**
+       * <code>required uint64 start = 3;</code>
+       */
+      public Builder setStart(long value) {
+        bitField0_ |= 0x00000004;
+        start_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required uint64 start = 3;</code>
+       */
+      public Builder clearStart() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        start_ = 0L;
+        onChanged();
+        return this;
+      }
+
+      // required uint64 end = 4;
+      private long end_ ;
+      /**
+       * <code>required uint64 end = 4;</code>
+       */
+      public boolean hasEnd() {
+        return ((bitField0_ & 0x00000008) == 0x00000008);
+      }
+      /**
+       * <code>required uint64 end = 4;</code>
+       */
+      public long getEnd() {
+        return end_;
+      }
+      /**
+       * <code>required uint64 end = 4;</code>
+       */
+      public Builder setEnd(long value) {
+        bitField0_ |= 0x00000008;
+        end_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required uint64 end = 4;</code>
+       */
+      public Builder clearEnd() {
+        bitField0_ = (bitField0_ & ~0x00000008);
+        end_ = 0L;
+        onChanged();
+        return this;
+      }
+
+      // required bytes data = 5;
+      private com.google.protobuf.ByteString data_ = com.google.protobuf.ByteString.EMPTY;
+      /**
+       * <code>required bytes data = 5;</code>
+       */
+      public boolean hasData() {
+        return ((bitField0_ & 0x00000010) == 0x00000010);
+      }
+      /**
+       * <code>required bytes data = 5;</code>
        */
       public com.google.protobuf.ByteString getData() {
         return data_;
       }
       /**
-       * <code>required bytes data = 3;</code>
+       * <code>required bytes data = 5;</code>
        */
       public Builder setData(com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000004;
+  bitField0_ |= 0x00000010;
         data_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>required bytes data = 3;</code>
+       * <code>required bytes data = 5;</code>
        */
       public Builder clearData() {
-        bitField0_ = (bitField0_ & ~0x00000004);
+        bitField0_ = (bitField0_ & ~0x00000010);
         data_ = getDefaultInstance().getData();
         onChanged();
         return this;
@@ -682,10 +860,10 @@ public final class FileTransferProtos {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\022FileTransfer.proto\022\002so\":\n\014FileFragment" +
-      "\022\n\n\002id\030\001 \002(\005\022\020\n\010checksum\030\002 \002(\t\022\014\n\004data\030\003" +
-      " \002(\014B)\n\023cl.uandes.so.serverB\022FileTransfe" +
-      "rProtos"
+      "\n\022FileTransfer.proto\022\002so\"V\n\014FileFragment" +
+      "\022\n\n\002id\030\001 \002(\005\022\020\n\010checksum\030\002 \002(\t\022\r\n\005start\030" +
+      "\003 \002(\004\022\013\n\003end\030\004 \002(\004\022\014\n\004data\030\005 \002(\014B)\n\023cl.u" +
+      "andes.so.serverB\022FileTransferProtos"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -697,7 +875,7 @@ public final class FileTransferProtos {
           internal_static_so_FileFragment_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_so_FileFragment_descriptor,
-              new java.lang.String[] { "Id", "Checksum", "Data", });
+              new java.lang.String[] { "Id", "Checksum", "Start", "End", "Data", });
           return null;
         }
       };

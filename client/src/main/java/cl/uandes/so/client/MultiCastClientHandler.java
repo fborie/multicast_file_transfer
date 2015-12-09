@@ -7,17 +7,22 @@
 package cl.uandes.so.client;
 
 import static cl.uandes.so.client.App.byteArray2Hex;
+import cl.uandes.so.server.FileTransferProtos.FileFragment;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 import io.netty.channel.socket.DatagramPacket;
+import static cl.uandes.so.client.Utils.*;
 
 /**
  *
  * @author rodrigo
  */
 public class MultiCastClientHandler extends SimpleChannelInboundHandler<DatagramPacket>{
-    
+    private AppStatus appStatus;
+    public MultiCastClientHandler(AppStatus appStatus) {
+        this.appStatus = appStatus;
+    }
         @Override
     public void channelRead0(ChannelHandlerContext ctx, DatagramPacket msg) throws Exception {
         if(msg.content().readableBytes() < 6) {
@@ -37,6 +42,10 @@ public class MultiCastClientHandler extends SimpleChannelInboundHandler<Datagram
         switch(a) {
             // File Announcement
             case 'A':
+                if(appStatus.hasFileAnnouncement) {
+                    // We already know about the file we are going to receive
+                    break;
+                }
                 byte[] a_length = {msg.content().readByte(), msg.content().readByte()};
                 System.out.println();
                 System.out.println("[A] packet received - Length: " +  Utils.getShortFromLittleEndianRange(a_length));
@@ -50,18 +59,48 @@ public class MultiCastClientHandler extends SimpleChannelInboundHandler<Datagram
                 System.out.println(" >fileSize: "+fa.getFileSize());
                 System.out.println(" >chunksTotal: "+fa.getChunksTotal());
                 System.out.println("===============================================");
+                appStatus.fa = fa;
+                appStatus.filename = fa.getFileName();
+                appStatus.filesize = fa.getFileSize();
+                // Prepare byte array to store chunks
+                appStatus.filecontent = new byte[fa.getFileSize()];
+                // Bool array for received chunks
+                appStatus.receivedChunks = new boolean[fa.getChunksTotal()];
+                for(int i = 0; i < fa.getChunksTotal(); i++) {
+                    appStatus.receivedChunks[i] = false;
+                }
+                appStatus.hasFileAnnouncement = true;
+                
                 break;
             case 'B':
-                length = msg.content().readShort();
-                System.out.println();
-                System.out.println("[B] packet received - Length: " + length);
-                payload = msg.content().readBytes(msg.content().readableBytes()).array();
+                //System.err.println("Ignoring B Packet...");
                 break;
-            case 'C':                
+            case 'C':              
+                if(!appStatus.hasFileAnnouncement) {
+                    // We don't know what we are receiving
+                    return;
+                }
+                // Reset Timer
+                appStatus.timeSinceLastResponse = 0;
                 byte[] c_length = {msg.content().readByte(), msg.content().readByte()};
-                System.out.println();
-                System.out.println("[C] packet received - Length: " + Utils.getShortFromLittleEndianRange(c_length));
+                //System.out.println("[C] packet received - Length: " + Utils.getShortFromLittleEndianRange(c_length));
                 payload = msg.content().readBytes(msg.content().readableBytes()).array();
+                FileFragment f = FileFragment.parseFrom(payload);
+                if(appStatus.receivedChunks[f.getId()] == true) {
+                    // We already received this chunk
+                    return;
+                }
+                // Verify Chunk integrity
+                if(SHAsum(f.getData().toByteArray()).equals(f.getChecksum())) {
+                    //System.out.printf("Got fragment %d, checksum OK", f.getId());
+                    appStatus.receivedChunks[f.getId()] = true;
+                    for(long i = f.getStart(); i < f.getEnd()+1; i++) {
+                        int chunkindex = (int)(i - f.getStart());
+                        appStatus.filecontent[(int)i] = f.getData().toByteArray()[chunkindex];
+                    }
+                    appStatus.incrementReceivedChunks();
+                }
+                
                 break;
             default:
                 System.out.println(String.format("Unknown packet type received, got %c", a));
@@ -69,9 +108,9 @@ public class MultiCastClientHandler extends SimpleChannelInboundHandler<Datagram
 
         }
         
-        ByteBuf data = msg.content().readBytes(msg.content().readableBytes());
+        //ByteBuf data = msg.content().readBytes(msg.content().readableBytes());
         
-        System.out.println(new String(data.array()));
+        //System.out.println(new String(data.array()));
         
         
 

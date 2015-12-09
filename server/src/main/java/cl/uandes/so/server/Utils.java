@@ -14,8 +14,12 @@ import java.util.Formatter;
  */
 public class Utils {
 
+    public static short getShortFromLittleEndianRange(byte[] range){
+        return (short)((range[1] << 8) + (range[0] & 0xff));
+    }
     public static FileAnnouncementProtos.FileAnnouncement generateFileAnnouncementMessage(FileAnnouncementChunk fileAnnouncementChunk){
-        FileAnnouncementProtos.FileAnnouncement fa = FileAnnouncementProtos.FileAnnouncement.newBuilder()
+
+        FileAnnouncement fa = FileAnnouncement.newBuilder()
                 .setChecksum(fileAnnouncementChunk.GetChecksum())
                 .setFileName(fileAnnouncementChunk.GetFileName())
                 .setFileSize(Ints.checkedCast(fileAnnouncementChunk.GetFileSize())  )
@@ -44,10 +48,13 @@ public class Utils {
      * @return
      */
     public static FileTransferProtos.FileFragment generateFileFragment(Fragment f, byte[] filecontent) {
+        //System.out.printf("FileContent[%d] - Generating Fragment %d-%d\n", filecontent.length, (int)f.start, (int)f.end);
         FileTransferProtos.FileFragment ff = FileTransferProtos.FileFragment.newBuilder()
                 .setId((int)f.getID())
                 .setChecksum(f.checksum)
-                .setData(ByteString.copyFrom(filecontent, (int)f.start, (int)f.end))
+                .setData(ByteString.copyFrom(filecontent, (int)f.start, (int)f.end+1-(int)f.start))
+                .setStart(f.start)
+                .setEnd(f.end)
                 .build();
         return ff;
     }

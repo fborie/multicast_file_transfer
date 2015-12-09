@@ -6,6 +6,8 @@ option java_outer_classname = "FileTransferProtos";
 message FileFragment {
   required int32 id = 1;
   required string checksum = 2;
-  required bytes data = 3;
+  required uint64 start = 3;
+  required uint64 end = 4;
+  required bytes data = 5;
 
 }
