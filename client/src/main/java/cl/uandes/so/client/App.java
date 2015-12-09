@@ -173,7 +173,7 @@ public class App
                         Unpooled.copiedBuffer( requestchunk_header, bytelength, c.toByteArray()),
                         new InetSocketAddress(ip_address, port))).sync();
                         Thread.sleep(1);
-                        if(appStatus.timeSinceLastResponse == 0) break; // racing
+                        //if(appStatus.timeSinceLastResponse == 0) break; // racing
                     }
                 }
             }

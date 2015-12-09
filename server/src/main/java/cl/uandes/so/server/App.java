@@ -235,7 +235,7 @@ public class App
             });
 
             announcer.start();
-            Thread.sleep(10000);
+            Thread.sleep(1000);
             
             
             // 'C' Packet Header 
