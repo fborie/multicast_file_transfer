@@ -248,13 +248,15 @@ public class App
                 ByteBuf pckt = Unpooled.copiedBuffer(filefragment_header, bytelength, payload.toByteArray() );
                         DatagramPacket a = new DatagramPacket(pckt, new InetSocketAddress(ip_address, port));
                         sc.writeAndFlush(a);
-                Thread.sleep(1);
-                sc.writeAndFlush(a);
-                System.out.println("Sent Fragment " + i);
+                Thread.sleep(3);
+                //sc.writeAndFlush(a);
+                //Thread.sleep(5);
+                //System.out.println("Sent Fragment " + i);
             }
             appStatus.isReceivingRequests = true;
             Thread.sleep(3000);
             int no_request_rounds = 0;
+            System.out.println("Looking for lost fragments...");
             while(true) {
                 boolean gotRequests = false;
                 for(i = 0; i < appStatus.requested_fragments.length; i++) {
@@ -267,7 +269,7 @@ public class App
                         ByteBuf pckt = Unpooled.copiedBuffer(filefragment_header, bytelength, payload.toByteArray() );
                         DatagramPacket a = new DatagramPacket(pckt, new InetSocketAddress(ip_address, port));
                         sc.writeAndFlush(a);
-                        System.out.println("Sent requested fragment " + i);
+                        //System.out.println("Sent requested fragment " + i);
                         appStatus.requested_fragments[i] = false;
                         Thread.sleep(1);
                     }
